@@ -130,3 +130,6 @@ dmypy.json
 
 # Test file
 test.py
+
+# Ignore ide cache
+.vscode/*

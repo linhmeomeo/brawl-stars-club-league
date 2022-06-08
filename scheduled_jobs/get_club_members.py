@@ -15,7 +15,7 @@ date = datetime.utcnow()
 
 if date.weekday() == 2:
 
-    club_tag = '#2YPY9LVV9'
+    club_tag = '#228VRR0UP'
     headers = {
         'Authorization' : f'Bearer {API_TOKEN}',
     }
