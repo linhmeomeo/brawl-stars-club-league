@@ -130,8 +130,8 @@ def serve_layout():
                     [
                         'Brawl Attack (',
                         html.A(
-                            '#2YPY9LVV9',
-                            href='https://brawlify.com/stats/club/2YPY9LVV9',
+                            '#228VRR0UP',
+                            href='https://brawlify.com/stats/club/228VRR0UP',
                             target='_blank',
                         ),
                         ')',
