@@ -85,60 +85,62 @@ if date.weekday() in [3, 5, 0]:
         battlelog = response.json()['items']
 
         for entry in battlelog:
-        
-            # identify if the entry is a club league game
-            if ('trophyChange' in entry['battle'] and
-                    (entry['battle']['type'] == 'teamRanked' and
-                     entry['battle']['trophyChange'] in [3, 5, 7, 9] or
-                     entry['battle']['type'] == 'ranked' and
-                     entry['event']['mode'] in mode_pool and
-                     entry['battle']['trophyChange'] in [1, 2, 3, 4])):
-
-                # only add the club league game if it has not been added already
-                if (entry['battleTime'] not in game_timestamps and
-                        entry['battleTime'] not in club_league_games_list):
-
-                    game_timestamps.append(entry['battleTime'])
-                    seasons.append(get_season(entry['battleTime']))
-                    event_days.append(get_event_day(entry['battleTime']))
-                    modes.append(entry['event']['mode'])
-                    maps.append(entry['event']['map'])
-                    game_types.append(entry['battle']['type'])
-                    results.append(entry['battle']['result'])
-                    trophy_changes.append(entry['battle']['trophyChange'])
-
-                    players1_tags.append(entry['battle']['teams'][0][0]['tag'])
-                    players1_names.append(entry['battle']['teams'][0][0]['name'])
-                    players1_brawlers.append(entry['battle']['teams'][0][0]['brawler']['name'])
-                    players1_are_club_members.append(True if players1_tags[-1] in club_members_list else False)
-
-                    players2_tags.append(entry['battle']['teams'][0][1]['tag'])
-                    players2_names.append(entry['battle']['teams'][0][1]['name'])
-                    players2_brawlers.append(entry['battle']['teams'][0][1]['brawler']['name'])
-                    players2_are_club_members.append(True if players2_tags[-1] in club_members_list else False)
-
-                    players3_tags.append(entry['battle']['teams'][0][2]['tag'])
-                    players3_names.append(entry['battle']['teams'][0][2]['name'])
-                    players3_brawlers.append(entry['battle']['teams'][0][2]['brawler']['name'])
-                    players3_are_club_members.append(True if players3_tags[-1] in club_members_list else False)
-
-                    players4_tags.append(entry['battle']['teams'][1][0]['tag'])
-                    players4_names.append(entry['battle']['teams'][1][0]['name'])
-                    players4_brawlers.append(entry['battle']['teams'][1][0]['brawler']['name'])
-                    players4_are_club_members.append(True if players4_tags[-1] in club_members_list else False)
-
-                    players5_tags.append(entry['battle']['teams'][1][1]['tag'])
-                    players5_names.append(entry['battle']['teams'][1][1]['name'])
-                    players5_brawlers.append(entry['battle']['teams'][1][1]['brawler']['name'])
-                    players5_are_club_members.append(True if players5_tags[-1] in club_members_list else False)
-
-                    players6_tags.append(entry['battle']['teams'][1][2]['tag'])
-                    players6_names.append(entry['battle']['teams'][1][2]['name'])
-                    players6_brawlers.append(entry['battle']['teams'][1][2]['brawler']['name'])
-                    players6_are_club_members.append(True if players6_tags[-1] in club_members_list else False)
-
-            else:
+            if 'battle' not in entry:
                 continue
+            else:
+                # identify if the entry is a club league game
+                if ('trophyChange' in entry['battle'] and
+                        (entry['battle']['type'] == 'teamRanked' and
+                        entry['battle']['trophyChange'] in [3, 5, 7, 9] or
+                        entry['battle']['type'] == 'ranked' and
+                        entry['event']['mode'] in mode_pool and
+                        entry['battle']['trophyChange'] in [1, 2, 3, 4])):
+
+                    # only add the club league game if it has not been added already
+                    if (entry['battleTime'] not in game_timestamps and
+                            entry['battleTime'] not in club_league_games_list):
+
+                        game_timestamps.append(entry['battleTime'])
+                        seasons.append(get_season(entry['battleTime']))
+                        event_days.append(get_event_day(entry['battleTime']))
+                        modes.append(entry['event']['mode'])
+                        maps.append(entry['event']['map'])
+                        game_types.append(entry['battle']['type'])
+                        results.append(entry['battle']['result'])
+                        trophy_changes.append(entry['battle']['trophyChange'])
+
+                        players1_tags.append(entry['battle']['teams'][0][0]['tag'])
+                        players1_names.append(entry['battle']['teams'][0][0]['name'])
+                        players1_brawlers.append(entry['battle']['teams'][0][0]['brawler']['name'])
+                        players1_are_club_members.append(True if players1_tags[-1] in club_members_list else False)
+
+                        players2_tags.append(entry['battle']['teams'][0][1]['tag'])
+                        players2_names.append(entry['battle']['teams'][0][1]['name'])
+                        players2_brawlers.append(entry['battle']['teams'][0][1]['brawler']['name'])
+                        players2_are_club_members.append(True if players2_tags[-1] in club_members_list else False)
+
+                        players3_tags.append(entry['battle']['teams'][0][2]['tag'])
+                        players3_names.append(entry['battle']['teams'][0][2]['name'])
+                        players3_brawlers.append(entry['battle']['teams'][0][2]['brawler']['name'])
+                        players3_are_club_members.append(True if players3_tags[-1] in club_members_list else False)
+
+                        players4_tags.append(entry['battle']['teams'][1][0]['tag'])
+                        players4_names.append(entry['battle']['teams'][1][0]['name'])
+                        players4_brawlers.append(entry['battle']['teams'][1][0]['brawler']['name'])
+                        players4_are_club_members.append(True if players4_tags[-1] in club_members_list else False)
+
+                        players5_tags.append(entry['battle']['teams'][1][1]['tag'])
+                        players5_names.append(entry['battle']['teams'][1][1]['name'])
+                        players5_brawlers.append(entry['battle']['teams'][1][1]['brawler']['name'])
+                        players5_are_club_members.append(True if players5_tags[-1] in club_members_list else False)
+
+                        players6_tags.append(entry['battle']['teams'][1][2]['tag'])
+                        players6_names.append(entry['battle']['teams'][1][2]['name'])
+                        players6_brawlers.append(entry['battle']['teams'][1][2]['brawler']['name'])
+                        players6_are_club_members.append(True if players6_tags[-1] in club_members_list else False)
+
+                else:
+                    continue
 
     club_league_games_new_df = pd.DataFrame(
         {
