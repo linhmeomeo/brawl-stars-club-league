@@ -22,7 +22,7 @@ app = Dash(
         },
     ],
 )
-app.title = 'Brawl Attack'
+app.title = "Mino's club"
 server = app.server
 
 def serve_layout():
