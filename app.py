@@ -128,13 +128,13 @@ def serve_layout():
             [
                 html.H1(
                     [
-                        "Mino´s club (',
+                        'Mino´s club (',
                         html.A(
                             '#228VRR0UP',
                             href='https://brawlify.com/stats/club/228VRR0UP',
                             target='_blank',
                         ),
-                        ')",
+                        ')',
                     ],
                 ),
                 dbc.Row(
